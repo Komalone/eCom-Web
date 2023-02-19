@@ -30,7 +30,7 @@ let App = ()=> {
     <>
     <StoreProvider>
   <Hearder onShowCart={showCartHandler}/>
-  {authCtx.isLoggedIn && showCart && <Cart onClose={hideCartHandler} />}
+  { showCart && <Cart onClose={hideCartHandler} />}
   <Switch>
   <Route path='/' exact ><Redirect to='/Home'/></Route>
     <Route path='/Home'><Home/></Route>

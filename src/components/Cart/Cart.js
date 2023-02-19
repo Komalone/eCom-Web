@@ -9,8 +9,8 @@ const Cart=(props)=>{
     const totalAmount= `Rs ${cartCtx.totalAmount.toFixed(2)}`;
 
     const removeItemHandler=(id)=>{
+        console.log(id);
         cartCtx.removeItem(id);
-        console.log(cartCtx);
     }
     const cartItems= (
         cartCtx.items.map((item)=>(
