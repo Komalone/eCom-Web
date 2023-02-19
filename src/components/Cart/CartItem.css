@@ -1,0 +1,27 @@
+.cart-items{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.cart-column{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-right: 1.5em;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+.cart-img{
+    width:80px;
+    border-radius:8%;
+    margin-right:20px;
+}
+.cart-item{
+    width:45%;
+}
+.cart-price{
+    width:20%;
+}
+.cart-quantity{
+    width:35%;
+}

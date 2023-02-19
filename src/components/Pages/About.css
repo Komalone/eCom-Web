@@ -1,0 +1,28 @@
+.about{
+    max-width:900px;
+    margin:0 auto;
+    font-size: 30px;
+}
+.about h2{
+    font-family:"Metal Mania";
+    text-align:center;
+    padding:20px;
+    font-size:40px;
+}
+.img-spn{
+    width: 200px;
+    height: 300px;
+}
+.main-div p{
+    font-size: 17px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgba(5, 2, 7, 0.6);
+}
+
+.img-spn img{
+    float:left;
+    margin:40px 50px;
+    border-radius: 70%;
+    width:200px;
+    height:200px;
+}
