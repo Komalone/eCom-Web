@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import CartContext from '../../store/store-context';
 import Modal from '../Layout/Modal';
 import './Cart.css';
@@ -6,16 +6,37 @@ import CartItem from './CartItem';
 
 const Cart=(props)=>{
     const cartCtx=useContext(CartContext);
-    const totalAmount= `Rs ${cartCtx.totalAmount.toFixed(2)}`;
+    const [cartData, setCartData]= useState([]);
+    const [totalAmount, setTotalAmount]= useState(0);
+
+useEffect(()=>{
+
+    fetch('https://crudcrud.com/api/ba7f3aaf421d44f0bf990e95e4de49ea/addTocart', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    }).then((res) => {
+        return res.json();
+    }).then((data) => {
+        console.log(data);
+        setCartData(data);
+
+        const totalPrice=  cartCtx.items.reduce((acc,curritem)=>{
+            return acc+curritem.item.price;
+        },0)
+        setTotalAmount(totalPrice);
+});
+
+},[]);
+   
+    
 
     const removeItemHandler=(id)=>{
-        console.log(id);
         cartCtx.removeItem(id);
     }
     const cartItems= (
-        cartCtx.items.map((item)=>(
+        cartData.map((item)=>(
             <CartItem
-            key={item.id}
+            key={item._id + item.id}
             id={item.id}
             name={item.name}
             imageURL={item.imageURL}
