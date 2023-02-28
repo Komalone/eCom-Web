@@ -1,96 +1,80 @@
-import React, { Fragment } from 'react'
-import ReactImageMagnify from 'react-image-magnify';
-//import { NavLink, useParams } from 'react-router-dom'
+import React, { Fragment } from 'react';
+import { Container, Col, Row, ListGroup} from 'react-bootstrap';
+//import ReactImageMagnify from 'react-image-magnify';
+import { useParams } from 'react-router-dom';
 import './Product.css'
 
 const SingleProduct = () => {
     const {id}= useParams();
 
     const productsArr = [
+      {
+         quantity: 1,
+          id: 'ablum1',
+          name: 'Album 1',
+          imageURL: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+          price: 100
+      },
+      {
+        quantity: 1,
+          id: 'ablum2',
+          name: 'Album 2',
+          imageURL: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+          price: 140
+      },
+      {
+        quantity: 1,
+          id: 'ablum3',
+          name: 'Album 3',
+          imageURL: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+          price: 200
+      },
+      {
+        quantity: 1,
+          id: 'ablum4',
+          name: 'Album 4',
+          imageURL: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+          price: 180
+      }
+  ];
 
-        {
-          id:'a1',
-        
-        title: 'Colors',
-        
-        price: 100,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-        
-        },
-        
-        {
-          id:'a2',
-        
-        title: 'Black and white Colors',
-        
-        price: 50,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-        
-        },
-        
-        {
-          id:'a3',
-        
-        title: 'Yellow and Black Colors',
-        
-        price: 70,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-        
-        },
-        
-        {
-          id:'a4',
-        
-        title: 'Blue Color',
-        
-        price: 100,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
-        
-        }
-        
-        ];
-
-        const snglprdct=productsArr.filter((item)=>item.id===id);
+        const snglprdct=productsArr.find((item)=>item.id===id);
 
 
   return (
     <Fragment>
-        
-            {
-                snglprdct.map((e)=>(
-                    <div className='single-main'>
-                    <div className='single-left'>
-                    
-                    <ReactImageMagnify {...{
-          smallImage: {
-            alt: 'Wristwatch by Ted Baker London',
-            isFluidWidth: true,
-            src: e.imageUrl
-          },
-          largeImage: {
-            src: e.imageUrl,
-            width: 1200,
-            height: 1800
-          }
-        }} />
-                    
+                     <Container>
+                <Row>
+                    <Col md={5}>
+                    <div className="containerimage">
+                    <img src={productMatch.imageUrl} alt={productMatch.title}  className="imageZoomFeature" />
                     </div>
-                    <div className='single-right'>
-                        <div className='single-title'>Title : {e.title}</div>
-                        <div className='single-mrp'>MRP : $<del>{e.price +199}</del></div>
-                        <div className='single-price'>Price : ${e.price}</div>
-                        <div className='single-desc'>Description : Lorem ipsum carrots enhanced rebates. 
-                        Excellent sayings of a man of sorrows, hates no prosecutors will unfold in the 
-                        enduring of which were born</div>
-                    </div>
-                    </div>
-                ))
-            }
-       
+                    </Col>
+                    <Col md={7}>
+
+                        <ListGroup>
+                            <ListGroup.Item variant="success"><h1>{productMatch.title}</h1></ListGroup.Item>
+                            <ListGroup.Item variant="primary"><h3>Amount ${productMatch.price}</h3></ListGroup.Item>
+                            <ListGroup.Item action variant="secondary"> Quantity: {productMatch.quantity}</ListGroup.Item> </ListGroup>
+                       <Row md={1}> 
+                            <Col >
+                            <div className="bottomConatiner">
+                            <img  className="bottomImage" src={productMatch.imageUrl} alt=""/>
+                            <img  className="bottomImage" src={productMatch.imageUrl} alt=""/>
+                            <img  className="bottomImage" src={productMatch.imageUrl} alt=""/>
+                            
+                            </div>
+                       
+                          
+                            
+                            </Col>
+                     </Row>
+                     </Col>
+      
+      </Row>
+   
+    </Container>
+
     </Fragment>
   )
 }
