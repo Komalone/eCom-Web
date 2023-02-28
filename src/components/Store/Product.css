@@ -1,0 +1,40 @@
+.containerimage{
+    /* height: ; */
+   width: 500px;
+   overflow: hidden;
+    
+}
+
+.imageZoomFeature{
+display: block;
+   width: 500px; 
+
+}
+.imageZoomFeature:hover{
+   transition: transform 5s;
+/*     
+   /* transform: scaleY(1.4); */
+   transform: scale(-3.3); 
+
+
+}
+.bottomConatiner{
+   width: 900px;
+   margin-top: 20px;
+   height: 200px;
+   overflow: hidden;
+
+}
+.bottomImage{
+
+   width: 200px;
+   height: 200px; 
+   margin-left: 5px;
+} 
+.bottomImage:hover{
+   transition: transform 3s;
+
+   transform: scale(1.6); 
+
+
+}

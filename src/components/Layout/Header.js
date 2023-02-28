@@ -1,19 +1,17 @@
-import { useContext, useState} from 'react'
+import { useContext} from 'react';
+import { } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
-import CartContext from '../../store/store-context';
+import CartBtn from './CartBtn';
+import AuthContext from '../../store/authContext';
 
-const Hearder=(props)=>{
-    const cartCtx= useContext(CartContext)
-    const [showCartbtn, setShow]=useState(true);
-    const showCartbtnHandler=()=>{
-        setShow(true);
+const Hearder=()=>{
+    const authCtx= useContext(AuthContext);
+    const pageShown= authCtx.isLoggedIn;
+    console.log(pageShown);
+    const logoutHandler=()=>{
+        authCtx.logout();
     }
-
-    let quantity=0;
-    cartCtx.items.forEach((item)=>{
-        quantity= quantity + Number(item.quantity)
-    });
 
 return(
     <div id='EcommerceContainer'>
@@ -21,12 +19,12 @@ return(
             <nav>
             <ul className='header'>
                 <li><NavLink to="/Home" >HOME</NavLink></li>
-                <li><NavLink to="/Store" onClick={showCartbtnHandler}>STORE</NavLink></li>
+                <li><NavLink to="/Store" >STORE</NavLink></li>
                 <li><NavLink to="/About">ABOUT</NavLink></li>
-                <li><NavLink to='/ContactUs'>Contact us</NavLink></li>
-                <li><NavLink to='/Auth'>LogIn</NavLink></li>
-                {showCartbtn && <NavLink to='/Store' className="cart-holder" onClick={props.onShowCart}>
-                Cart <span className='cart-number'>{quantity}</span></NavLink>}
+                {pageShown && <li><NavLink to='/ContactUs'>Contact us</NavLink></li>}
+                 {!pageShown &&<li><NavLink to='/Store'>LogIn</NavLink></li>}
+                {pageShown &&<li><NavLink to="/Auth" onClick={logoutHandler}>LogOut</NavLink></li>}
+                {pageShown && <NavLink to='/Store' ><CartBtn/></NavLink>}
             </ul>
             </nav>
             <h1>The Generics</h1>

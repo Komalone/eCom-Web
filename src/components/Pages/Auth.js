@@ -3,20 +3,21 @@ import { useHistory,
     //useNavigate 
       } from 'react-router-dom';
       
-import CartContext from '../../store/store-context';
+//import CartContext from '../../store/store-context';
+import AuthContext from '../../store/authContext';
 import './Auth.css'
 
 const Authentication = () => {
-
     const [isLogin, setIsLogin] = useState(true);
   const [sendingReq,setSendingReq]=useState(false);
 
-  const ctx=useContext(CartContext);
+  const authctx=useContext(AuthContext);
 
   const emailInputRef=useRef();
   const passwordInputRef=useRef();
 
  const history = useHistory();
+
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
@@ -48,9 +49,9 @@ const Authentication = () => {
         if(res.ok){
             let data=res.json();
             (data).then((resp)=>{
-                ctx.login(resp.idToken);
-                history('/store')
-                console.log(resp.idToken);
+                authctx.login(resp.idToken);
+                authctx.isLoggedIn=true;
+                history.push('/Store');
             })
         }else{
             const data =res.json();
