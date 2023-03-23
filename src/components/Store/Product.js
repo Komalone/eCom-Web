@@ -47,21 +47,21 @@ const SingleProduct = () => {
                 <Row>
                     <Col md={5}>
                     <div className="containerimage">
-                    <img src={productMatch.imageUrl} alt={productMatch.title}  className="imageZoomFeature" />
+                    <img src={snglprdct.imageUrl} alt={snglprdct.title}  className="imageZoomFeature" />
                     </div>
                     </Col>
                     <Col md={7}>
 
                         <ListGroup>
-                            <ListGroup.Item variant="success"><h1>{productMatch.title}</h1></ListGroup.Item>
-                            <ListGroup.Item variant="primary"><h3>Amount ${productMatch.price}</h3></ListGroup.Item>
-                            <ListGroup.Item action variant="secondary"> Quantity: {productMatch.quantity}</ListGroup.Item> </ListGroup>
+                            <ListGroup.Item variant="success"><h1>{snglprdct.title}</h1></ListGroup.Item>
+                            <ListGroup.Item variant="primary"><h3>Amount ${snglprdct.price}</h3></ListGroup.Item>
+                            <ListGroup.Item action variant="secondary"> Quantity: {snglprdct.quantity}</ListGroup.Item> </ListGroup>
                        <Row md={1}> 
                             <Col >
                             <div className="bottomConatiner">
-                            <img  className="bottomImage" src={productMatch.imageUrl} alt=""/>
-                            <img  className="bottomImage" src={productMatch.imageUrl} alt=""/>
-                            <img  className="bottomImage" src={productMatch.imageUrl} alt=""/>
+                            <img  className="bottomImage" src={snglprdct.imageUrl} alt=""/>
+                            <img  className="bottomImage" src={snglprdct.imageUrl} alt=""/>
+                            <img  className="bottomImage" src={snglprdct.imageUrl} alt=""/>
                             
                             </div>
                        

@@ -14,7 +14,7 @@ const CartBtn=()=>{
     }
     useEffect(()=>{
 
-        fetch('https://crudcrud.com/api/ba7f3aaf421d44f0bf990e95e4de49ea/addTocart', {
+        fetch('https://crudcrud.com/api/9dc169aec764414599ab6dfafd3c6998/addTocart', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }).then((res) => {

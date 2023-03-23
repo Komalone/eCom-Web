@@ -11,7 +11,7 @@ import ContactUs from './components/Pages/Contact';
 import Authentication from './components/Pages/Auth';
 import Login from './components/Pages/Login';
 import AuthContext from './store/authContext';
-//import SingleProduct from './components/Pages/Product';
+//import SingleProduct from './components/Store/Product';
 
 
 let App = ()=> {
@@ -29,8 +29,13 @@ let App = ()=> {
       <Login />
       </Route>
     <Route path='/ContactUs'><ContactUs/></Route>
+    <Route path='/Auth'>
+    {!authCtx.isLoggedIn && <Authentication/>}
+    {authCtx.isLoggedIn && <h1>Page Not Found </h1>}
+    </Route>
+    {//<Route path='/SingleProduct'><SingleProduct/> </Route>
+    }
     
-    {!authCtx.isLoggedIn && <Route path='/Auth'><Authentication/></Route>}
   </Switch>
   <Footer/>
 </StoreProvider>   

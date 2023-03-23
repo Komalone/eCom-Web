@@ -1,8 +1,7 @@
 import React, {  } from 'react';
 import StoreItem from './StoreItem';
 import "./Store.css";
-//import CartContext from '../../store/store-context';
-//import { useParams } from 'react-router-dom';
+
 
 
 const musicList=[
@@ -76,6 +75,7 @@ const Store = (props) => {
     />
   ));
 
+
   return (    
   <>
     <section id="music" className="container">
@@ -90,7 +90,7 @@ const Store = (props) => {
         {merch}
       </div>
     </section>
-    <button onClick={props.onShowCart} className="cart-btn-bottom"> See the cart</button>
+    
   </>
   );
 };

@@ -9,9 +9,14 @@ const Hearder=()=>{
     const authCtx= useContext(AuthContext);
     const pageShown= authCtx.isLoggedIn;
     console.log(pageShown);
-    const logoutHandler=()=>{
-        authCtx.logout();
-    }
+    // const logoutBtn=()=>{
+    //     authCtx.logout();
+    //     authCtx.isLoggedIn=false
+    // }
+    // const loginBtn=()=>{
+    //     console.log('aa')
+    //     authCtx.isLoggedIn=true;
+    // }
 
 return(
     <div id='EcommerceContainer'>
@@ -22,8 +27,8 @@ return(
                 <li><NavLink to="/Store" >STORE</NavLink></li>
                 <li><NavLink to="/About">ABOUT</NavLink></li>
                 {pageShown && <li><NavLink to='/ContactUs'>Contact us</NavLink></li>}
-                 {!pageShown &&<li><NavLink to='/Store'>LogIn</NavLink></li>}
-                {pageShown &&<li><NavLink to="/Auth" onClick={logoutHandler}>LogOut</NavLink></li>}
+                 {!pageShown &&<li><NavLink to='/Auth' >LogIn</NavLink></li>}
+                {pageShown &&<li><NavLink to="/Auth" onClick={authCtx.logout}>LogOut</NavLink></li>}
                 {pageShown && <NavLink to='/Store' ><CartBtn/></NavLink>}
             </ul>
             </nav>

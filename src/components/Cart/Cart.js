@@ -11,28 +11,27 @@ const Cart=(props)=>{
 
 useEffect(()=>{
 
-    fetch('https://crudcrud.com/api/ba7f3aaf421d44f0bf990e95e4de49ea/addTocart', {
+    fetch('https://crudcrud.com/api/9dc169aec764414599ab6dfafd3c6998/addTocart', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     }).then((res) => {
         return res.json();
     }).then((data) => {
-        console.log(data);
         setCartData(data);
 
-        const totalPrice=  cartCtx.items.reduce((acc,curritem)=>{
+        const totalPrice=  data.reduce((acc,curritem)=>{
             return acc+curritem.item.price;
         },0)
         setTotalAmount(totalPrice);
 });
 
-},[]);
+},[props.onClose]);
    
     
 
-    const removeItemHandler=(id)=>{
-        cartCtx.removeItem(id);
-    }
+    // const removeItemHandler=(id)=>{
+    //     cartCtx.removeItem(id);
+    // }
     const cartItems= (
         cartData.map((item)=>(
             <CartItem
@@ -41,10 +40,11 @@ useEffect(()=>{
             name={item.name}
             imageURL={item.imageURL}
             price={item.price}
-            amount={1}
-            onRemove={removeItemHandler}/>
+            quantity={1}
+            onRemove={cartCtx.removeItem(item._id)}/>
         ))
     );
+    console.log(cartItems);
     
 
     return (
