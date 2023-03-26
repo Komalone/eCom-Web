@@ -9,7 +9,7 @@ const StoreItem=(props)=>{
 
   const addToCartHandler=(event)=>{
     event.preventDefault();
-    console.log("add item")
+    
 
     cartCtx.addItem({
       id:props.id,

@@ -3,12 +3,11 @@ import './CartItem.css'
 
 
 const CartItem=(props)=>{
-    
-    // const removeid=(id)=>{
-    //     console.log('id', id)
+    const removeid=(id)=>{
+        console.log('id', id)
         
-    //     props.onRemove(id);
-    // }
+        props.onRemove(id);
+    }
 
 
     return (
@@ -21,7 +20,7 @@ const CartItem=(props)=>{
             <span className='cart-price cart-column'>{props.price}</span>
             <span className='cart-quantity cart-column'>
             <input type="text" value={props.quantity}></input>
-            <button onClick={props.onRemove}>REMOVE</button>
+            <button onClick={()=>removeid(props.id)}>REMOVE</button>
             </span>
             </div>
         </div>

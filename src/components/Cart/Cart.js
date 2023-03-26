@@ -3,6 +3,7 @@ import CartContext from '../../store/store-context';
 import Modal from '../Layout/Modal';
 import './Cart.css';
 import CartItem from './CartItem';
+import axios from "axios";
 
 const Cart=(props)=>{
     const cartCtx=useContext(CartContext);
@@ -10,17 +11,14 @@ const Cart=(props)=>{
     const [totalAmount, setTotalAmount]= useState(0);
 
 useEffect(()=>{
+    
+    axios.get('https://crudcrud.com/api/683aa219ce5a4edc8387c61b124ddc17/addTocart')
+    .then((ele) => {
+        setCartData(ele.data);
+        console.log(ele.data)
 
-    fetch('https://crudcrud.com/api/9dc169aec764414599ab6dfafd3c6998/addTocart', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-    }).then((res) => {
-        return res.json();
-    }).then((data) => {
-        setCartData(data);
-
-        const totalPrice=  data.reduce((acc,curritem)=>{
-            return acc+curritem.item.price;
+        const totalPrice=  ele.data.reduce((acc,curritem)=>{
+            return acc+curritem.price;
         },0)
         setTotalAmount(totalPrice);
 });
@@ -29,22 +27,22 @@ useEffect(()=>{
    
     
 
-    // const removeItemHandler=(id)=>{
-    //     cartCtx.removeItem(id);
-    // }
+    const removeItemHandler=(id)=>{
+        cartCtx.removeItem(id);
+        console.log(cartCtx.items.filter(item=> item.id !== id))
+    }
     const cartItems= (
         cartData.map((item)=>(
             <CartItem
-            key={item._id + item.id}
-            id={item.id}
+            key={item._id}
+            id={item._id}
             name={item.name}
             imageURL={item.imageURL}
             price={item.price}
             quantity={1}
-            onRemove={cartCtx.removeItem(item._id)}/>
+            onRemove={removeItemHandler}/>
         ))
     );
-    console.log(cartItems);
     
 
     return (
@@ -60,7 +58,7 @@ useEffect(()=>{
             <div className="cart-total">
                 <span>
                     <span className='total-title'> <strong>Total</strong>
-                        </span><span id='total-value'>{totalAmount}</span>
+                        </span><span id='total-value'>$ {totalAmount}</span>
                 </span>
             </div>
             <button className='purchase-btn' type='button'>PURCHASE</button>

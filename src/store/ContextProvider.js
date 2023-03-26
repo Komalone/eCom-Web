@@ -3,42 +3,39 @@ import React, {
     useState
 } from "react";
 import CartContext from "./store-context";
+import axios from "axios"
 
 const StoreProvider=(props)=>{
     const [items, setItem ]= useState([])
     
     const updatedTotalAmount = Number(items.price);
     
-    const addToCartHandler=(item)=>{
-        fetch('https://crudcrud.com/api/9dc169aec764414599ab6dfafd3c6998/addTocart', {
-            method: 'POST',
-            body: JSON.stringify( item ),
-            headers: { 'Content-Type': 'application/json' }
-        });
-
+   
+    const addToCartHandler= async(item)=>{
         
-        //const updatedItems= axios.post(`https://crudcrud.com/api/79d6cf68c8cf4086bd2e133d02a6a9df/cartitem`, JSON.stringify(item))
-       // const updatedItems= items.concat(item);
-       console.log([...items, item]); 
-       setItem([...items, item]);
-        
+    try{
+        const response= await axios.post(`https://crudcrud.com/api/683aa219ce5a4edc8387c61b124ddc17/addTocart`,(item))
+        console.log(response);
+        setItem([...items, response]);
+    }catch(err){
+        console.log(err);
+    }
+          
     };
     
-    const removeFromCartHandler=(id)=>{
-
-        // fetch(`https://crudcrud.com/api/9dc169aec764414599ab6dfafd3c6998/addTocart/${id}`, {
-        //     method: 'DELETE',
-        //     headers: { 'Content-Type': 'application/json' }
-        // })
-
-
-          //const updatedItems = items.filter(item => item.id !== id);
-          //const updatedItems= axios.delete(`https://crudcrud.com/api/4f6edc817d5142be9322bd7b657d767d/cartItem/}`,)
-          setItem([...items ])
+    const removeFromCartHandler=async(id)=>{
+        
+        //const updatedItems = items.filter(item => item.id !== id);
+        try{
+         await axios.delete(`https://crudcrud.com/api/683aa219ce5a4edc8387c61b124ddc17/addTocart/${id}`)
+          setItem([...items]);
+        }catch(err){
+            console.log(err);
+        }
     };
 
     const cartContext = {
-        items:items ,
+        items: [...items] ,
         totalAmount: updatedTotalAmount,
         addItem: addToCartHandler,
         removeItem: removeFromCartHandler,
