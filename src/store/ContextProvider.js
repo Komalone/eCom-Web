@@ -8,6 +8,7 @@ const StoreProvider=(props)=>{
     const [items, setItem ]= useState([])
     
     const updatedTotalAmount = Number(items.price);
+    console.log("abc");
     
     const addToCartHandler=(item)=>{
         fetch('https://crudcrud.com/api/ba7f3aaf421d44f0bf990e95e4de49ea/addTocart', {
