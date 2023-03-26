@@ -9,7 +9,7 @@ const StoreProvider=(props)=>{
     const [items, setItem ]= useState([])
     
     const updatedTotalAmount = Number(items.price);
-    
+    console.log("abc");
    
     const addToCartHandler= async(item)=>{
         
