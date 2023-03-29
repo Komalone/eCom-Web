@@ -15,7 +15,9 @@ const CartBtn=()=>{
     }
     
 
-    const quantity= cartCtx.items.length;
+    const quantity= cartCtx.items.reduce((currLen)=>{
+        return currLen;
+    },0);
     console.log(quantity);
 
     return (

@@ -9,12 +9,16 @@ const StoreProvider=(props)=>{
     const [items, setItem ]= useState([])
     
     const updatedTotalAmount = Number(items.price);
-    console.log("abc");
+
+    
    
     const addToCartHandler= async(item)=>{
         
     try{
-        const response= await axios.post(`https://crudcrud.com/api/683aa219ce5a4edc8387c61b124ddc17/addTocart`,(item))
+        const emailUsed= localStorage.getItem('loginEmail')
+        const loginEmail= emailUsed.replace(/[@.]/g, '');
+        console.log(loginEmail);
+        const response= await axios.post(`https://crudcrud.com/api/683aa219ce5a4edc8387c61b124ddc17/cart${loginEmail}`,(item))
         console.log(response);
         setItem([...items, response]);
     }catch(err){
@@ -27,7 +31,10 @@ const StoreProvider=(props)=>{
         
         //const updatedItems = items.filter(item => item.id !== id);
         try{
-         await axios.delete(`https://crudcrud.com/api/683aa219ce5a4edc8387c61b124ddc17/addTocart/${id}`)
+            const emailUsed= localStorage.getItem('loginEmail')
+        const loginEmail= emailUsed.replace(/[@.]/g, '');
+        console.log(loginEmail);
+         await axios.delete(`https://crudcrud.com/api/683aa219ce5a4edc8387c61b124ddc17/cart${loginEmail}/${id}`)
           setItem([...items]);
         }catch(err){
             console.log(err);

@@ -49,6 +49,8 @@ const Authentication = () => {
         if(res.ok){
             let data=res.json();
             (data).then((resp)=>{
+              console.log(resp.email);
+              localStorage.setItem('loginEmail', resp.email);
                 authctx.login(resp.idToken);
                 authctx.isLoggedIn=true;
                 history.push('/Store');

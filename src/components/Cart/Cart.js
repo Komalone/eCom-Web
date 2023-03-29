@@ -10,9 +10,13 @@ const Cart=(props)=>{
     const [cartData, setCartData]= useState([]);
     const [totalAmount, setTotalAmount]= useState(0);
 
+    const emailUsed= localStorage.getItem('loginEmail')
+        const loginEmail= emailUsed.replace(/[@.]/g, '');
+        console.log(loginEmail);
+
 useEffect(()=>{
     
-    axios.get('https://crudcrud.com/api/683aa219ce5a4edc8387c61b124ddc17/addTocart')
+    axios.get(`https://crudcrud.com/api/683aa219ce5a4edc8387c61b124ddc17/cart${loginEmail}`)
     .then((ele) => {
         setCartData(ele.data);
         console.log(ele.data)
@@ -23,7 +27,7 @@ useEffect(()=>{
         setTotalAmount(totalPrice);
 });
 
-},[props.onClose]);
+},[props.onClose, loginEmail]);
    
     
 
