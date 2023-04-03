@@ -1,6 +1,7 @@
 import React, { 
     useContext
  } from 'react';
+import { Link } from 'react-router-dom';
 import CartContext from '../../store/store-context';
 import './Store.css'
 
@@ -24,7 +25,7 @@ const StoreItem=(props)=>{
         <div className='album' id={props.id}>
             <h3>{props.name}</h3>
             <div className="image-container">
-                <img className="prod-images" src={props.imageURL} alt=""/>
+                <Link to='/SingleProduct/'><img className="prod-images" src={props.imageURL} alt=""/></Link>
             </div>
             <div className="prod-details">
                 <span>Rs <span>{props.price}</span></span>

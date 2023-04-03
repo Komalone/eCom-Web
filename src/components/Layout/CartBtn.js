@@ -14,11 +14,7 @@ const CartBtn=()=>{
         setShow(false);
     }
     
-
-    const quantity= cartCtx.items.reduce((currLen)=>{
-        return currLen;
-    },0);
-    console.log(quantity);
+    const quantity= cartCtx.items.length;
 
     return (
         <>

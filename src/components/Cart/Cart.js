@@ -12,11 +12,10 @@ const Cart=(props)=>{
 
     const emailUsed= localStorage.getItem('loginEmail')
         const loginEmail= emailUsed.replace(/[@.]/g, '');
-        console.log(loginEmail);
 
 useEffect(()=>{
     
-    axios.get(`https://crudcrud.com/api/683aa219ce5a4edc8387c61b124ddc17/cart${loginEmail}`)
+    axios.get(`https://crudcrud.com/api/f15fa7b1aa6b458295da92b94e75dfd0/cart${loginEmail}`)
     .then((ele) => {
         setCartData(ele.data);
         console.log(ele.data)
@@ -28,22 +27,20 @@ useEffect(()=>{
 });
 
 },[props.onClose, loginEmail]);
-   
-    
 
     const removeItemHandler=(id)=>{
         cartCtx.removeItem(id);
-        console.log(cartCtx.items.filter(item=> item.id !== id))
+       const abc= cartCtx.items.filter(item=> item.data._id !== id);
+       console.log("while remove",abc) 
     }
     const cartItems= (
         cartData.map((item)=>(
             <CartItem
-            key={item._id}
             id={item._id}
             name={item.name}
             imageURL={item.imageURL}
             price={item.price}
-            quantity={1}
+            quantity={item.quantity}
             onRemove={removeItemHandler}/>
         ))
     );

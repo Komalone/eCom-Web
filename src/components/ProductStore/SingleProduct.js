@@ -38,7 +38,7 @@ const SingleProduct = () => {
       }
   ];
 
-        const snglprdct=productsArr.find((item)=>item.id===id);
+        const snglprdct=productsArr.find((currItem)=>currItem.id===id);
 
 
   return (
@@ -47,7 +47,7 @@ const SingleProduct = () => {
                 <Row>
                     <Col md={5}>
                     <div className="containerimage">
-                    <img src={snglprdct.imageUrl} alt={snglprdct.title}  className="imageZoomFeature" />
+                    <img src={snglprdct.imageURL} alt={snglprdct.title}  className="imageZoomFeature" />
                     </div>
                     </Col>
                     <Col md={7}>
@@ -59,9 +59,9 @@ const SingleProduct = () => {
                        <Row md={1}> 
                             <Col >
                             <div className="bottomConatiner">
-                            <img  className="bottomImage" src={snglprdct.imageUrl} alt=""/>
-                            <img  className="bottomImage" src={snglprdct.imageUrl} alt=""/>
-                            <img  className="bottomImage" src={snglprdct.imageUrl} alt=""/>
+                            <img  className="bottomImage" src={snglprdct.imageURL} alt=""/>
+                            <img  className="bottomImage" src={snglprdct.imageURL} alt=""/>
+                            <img  className="bottomImage" src={snglprdct.imageURL} alt=""/>
                             
                             </div>
                        

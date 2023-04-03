@@ -1,6 +1,6 @@
 import { useContext, 
     useState, 
-   // useEffect
+    useEffect
 } from 'react';
 import { } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
@@ -10,12 +10,13 @@ import AuthContext from '../../store/authContext';
 
 const Hearder=()=>{
     const authCtx= useContext(AuthContext);
-    const [showLog, setShowLog]=useState(true);
+    const [showLog, setShowLog]=useState(false);
     const pageShown= authCtx.isLoggedIn;
+    console.log(showLog);
     
-    // useEffect(()=>{
-    //     setShowLog(false);
-    // }, [pageShown])
+    useEffect(()=>{
+        setShowLog(true);
+    }, [pageShown])
 
     const loginBtn= ()=>{
         setShowLog(true);
